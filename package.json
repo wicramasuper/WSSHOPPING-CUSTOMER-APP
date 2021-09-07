@@ -1,17 +1,27 @@
 {
   "name": "wsshopping-customer-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "shopping cart",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "dev": "nodemon server.js"
   },
-  "author": "",
+  "author": "Sachini",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^5.13.7",
+    "mongoose": "^5.13.9",
     "nodemon": "^2.0.12"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wicramasuper/WSSHOPPING-CUSTOMER-APP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wicramasuper/WSSHOPPING-CUSTOMER-APP/issues"
+  },
+  "homepage": "https://github.com/wicramasuper/WSSHOPPING-CUSTOMER-APP#readme"
 }
