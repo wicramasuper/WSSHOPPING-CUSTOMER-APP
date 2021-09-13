@@ -1,3 +1,4 @@
+const user = require("../../models/user/user");
 const User = require("../../models/user/user");
 
 exports.userById = (req, res, next, id) => {
@@ -119,7 +120,7 @@ exports.update = (req, res) => {
 
 // delete user by userId
 exports.deleteuser =(req, res) => {
-    let user  = new User(req.body);
+    let user  = req.profile;
 
     user.remove((err,data)=>{
 
@@ -128,8 +129,26 @@ exports.deleteuser =(req, res) => {
         res.json({data,message:"User deleted successfully"});
 
     })
-
-
-
 };
+
+exports.userList = (req, res) => {
+    User.find().exec((err, data) => {
+        User.salt = undefined;
+        User.hashed_password = undefined;
+        if(err) {
+            return res.status(400).json({
+                error : 'sdsfs'
+            })
+        }
+        else {
+            res.json(data)
+        }
+    })
+}
+
+
+
+
+
+
 
