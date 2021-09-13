@@ -23,6 +23,11 @@ app.use(express.urlencoded({extended:true}));
 const authRoutes = require('./routes/user/auth');
 const userRoutes = require('./routes/user/user');
 
+//import the routes
+const homeRoute = require('./routes/customer-core/home');
+//routes middlware
+app.use("/",homeRoute);
+
 //routes middleware
 app.use('/api', authRoutes);  
 app.use('/api', userRoutes);                        
