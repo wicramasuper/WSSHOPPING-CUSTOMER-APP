@@ -1,24 +1,42 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-require('dotenv').config();
 
-const port = process.env.PORT || 9000;
+const app = express();
 
-mongoose.connect(process.env.MONGO_URL,{
-    useNewUrlParser:true,
-    useCreateIndex:true,
-    useUnifiedTopology:true
-}).then(()=>{
-    console.log("database connection established");
+//import routes
+
+const postRoutes = require('./routes/customer-core/posts');
+
+//app middleware
+app.use(bodyParser.json());
+app.use(cors());
+
+//route middleware
+
+app.use(postRoutes);
+
+
+
+const PORT = 9000;
+const DB_URL = 'mongodb+srv://wssuper:mern@cluster0.ee9hx.mongodb.net/wickramasuperdb?retryWrites=true&w=majority';
+
+mongoose.connect(DB_URL,{
+useNewUrlParser: true,
+useUnifiedTopology: true
+})
+
+.then(()=>{
+console.log('DB connected');
+})
+.catch((err)=> console.log('DB connection error',err));
+
+
+
+
+
+app.listen(PORT,()=>{
+console.log('App is running on ${PORT}');
 });
-
-app.listen(port,()=>{
-    console.log(`server is running on port ${port}`);
-});
-
-
-//demo changing
-
-//branch changing
