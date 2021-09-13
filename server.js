@@ -26,8 +26,11 @@ mongoose.connect(process.env.MONGO_URL,{
 
 //shopping cart
 const shoppingroute= require("./routes/customer-cart/shoppingcart.js");
+//addquantity form
+const addquantityroute= require("./routes/customer-cart/addquantity.js");
 
 app.use("/shoppingcart",shoppingroute); 
+app.use("/addquantity",addquantityroute);
 
 app.listen(PORT, () =>{
     console.log(`Server is running on port ${PORT}`)
